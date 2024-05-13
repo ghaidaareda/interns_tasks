@@ -1,4 +1,5 @@
 import mysql.connector
+import getpass
 
 """
 python script to connect to database
@@ -7,7 +8,7 @@ python script to connect to database
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="ghaidaa88",
+    password=getpass.getpass(""),
 )
 mycursor = mydb.cursor()
 sql_query_create_db = "CREATE DATABASE IF NOT EXISTS users;"
