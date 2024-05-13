@@ -1,4 +1,9 @@
 import mysql.connector
+
+"""
+python script to connect to database
+& create table with certain columns
+"""
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
