@@ -26,11 +26,11 @@ def index():
     connection.close()
     return render_template('index.html', users=users)
 
-@app.route('/user/<fname>')
-def get_user():
+@app.route('/<fname>')
+def get_user(fname):
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
-    cursor.execute('SELECT * FROM users WHERE name = %s' , (fname,))
+    cursor.execute('SELECT * FROM users WHERE fname = %s' , (fname,))
     user = cursor.fetchone()
     cursor.close()
     connection.close()
