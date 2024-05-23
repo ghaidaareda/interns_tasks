@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import mysql.connector
 
 app = Flask(__name__)
@@ -36,7 +36,7 @@ def get_user(fname):
     connection.close()
     
     if user:
-        return render_template('index1.html', user=user)
+        return jsonify(user)
     else:
         return 'user not found', 404 
 if __name__ == '__main__':
