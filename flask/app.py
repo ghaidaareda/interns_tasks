@@ -64,7 +64,6 @@ class User(db.Model):
         """ constructor """
         if(not kwargs or 'id' not in kwargs): 
             self.id = str(uuid4())
-            self.register_date = datetime.now()
             if kwargs:
                 for k,v in kwargs.items():
                     setattr(self, k, v)
@@ -89,7 +88,7 @@ def home():
     return render_template('home.html', users_data=users_data)
 
 
-@app.route('/json')
+@app.route('/json', methods=['GET'])
 def users_data_asjson():
     users = User.query.all()
     users_json = [user.to_dict() for user in users]
