@@ -1,72 +1,81 @@
 "use strict";
 
 // selecting element
-const firstName = document.getElementById("first");
-const lastName = document.getElementById("last");
-const email = document.getElementById("email");
-const contact = document.getElementById("mobile");
-const gender = document.getElementById("gender").value;
 const registerBtn = document.querySelector(".registerbtn");
-const err = document.querySelector(".error");
 
-//validate posted data:
+// Error elements
+const firstError = document.getElementById("firstError");
+const lastError = document.getElementById("lastError");
+const emailError = document.getElementById("emailError");
+const contactError = document.getElementById("contactError");
 
+// Validate posted data
 const dataValidation = (e) => {
   e.preventDefault();
   clearError();
 
-  const first = firstName.value.trim();
-  const last = lastName.value.trim();
-  const mail = email.value.trim();
-  const number = contact.value.trim();
+  const firstName = document.getElementById("first").value.trim();
+  const lastName = document.getElementById("last").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const contact = document.getElementById("mobile").value.trim();
+  const gender = document.getElementById("gender").value;
 
-  if (first.length < 2) {
-    showError();
+  if (firstName === "" || firstName.length < 3) {
+    showError(firstError, "Please enter a valid First name");
     return;
   }
 
-  if (last.length < 2) {
-    showError();
+  if (lastName === "" || lastName.length < 3) {
+    showError(lastError, "Please enter a valid Last name");
     return;
   }
 
-  if (!mail.match(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/)) {
-    showError();
+  if (!email.match(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/)) {
+    showError(emailError, "Please enter a valid Email");
     return;
   }
 
-  if (number.length < 10) {
-    showError();
+  if (contact.length < 10) {
+    showError(contactError, "Please enter a valid Mobile Number");
     return;
   }
 
   const data = {
-    firstName: first,
-    lastName: last,
-    email: mail,
-    contact: number,
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    contact: contact,
     gender: gender,
   };
+  console.log(data);
 
-  fetch("http://localhost:5000/", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((res) => res.json())
-    .then((result) => console.log(result))
-    .catch((error) => console.log(error.message));
+  cleardata();
 };
 
-//error message:
-const showError = () => {}; //stil accodring to html
+// Show error message
+const showError = (element, message) => {
+  element.style.display = "block";
+  element.innerText = message;
+};
 
-//clear error message:
-const clearError = () => {}; //still display none
+// Clear error messages
+const clearError = () => {
+  firstError.style.display = "none";
+  lastError.style.display = "none";
+  emailError.style.display = "none";
+  contactError.style.display = "none";
+};
 
-// event
+// clear data again:
+const cleardata = () => {
+  document.getElementById("first").value = "";
+  document.getElementById("last").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("mobile").value = "";
+  document.getElementById("gender").value = "";
+};
+
+// Event
 registerBtn.addEventListener("click", dataValidation);
 
 // new register

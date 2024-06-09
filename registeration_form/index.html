@@ -19,21 +19,22 @@
           id="first"
           name="first"
           placeholder="First name"
-          required
         />
-        <p class="error" >Please enter a valid First name</p>
+        <p class="error" id="firstError">Please enter a valid name</p>
         <label for="last"><b>Last Name:<b/></label>
-        <input type="text" id="last" name="last" placeholder="Last name" required />
+        <input type="text" id="last" name="last" placeholder="Last name"/>
+        <p class="error" id="lastError">Please enter a valid name</p>
         <label for="email"><b>Email</b></label>
         <input
           type="text"
           placeholder="Enter Email"
           name="email"
           id="email"
-          required
         />
+        <p class="error" id="emailError">Please enter a valid email</p>
         <label for="mobile">Contact:</label>
-        <input type="text" id="mobile" name="mobile" placeholder="Mobile Number" maxlength="11" required />
+        <input type="text" id="mobile" name="mobile" placeholder="Mobile Number" />
+        <p class="error" id="contactError">Please enter a valid mobile number</p>
   
         <label for="gender"><b>Gender:</b></label>
         <select id="gender" name="gender" required>
