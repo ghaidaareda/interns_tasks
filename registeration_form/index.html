@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>registeration form</title>
-    <link rel="stylesheet" href="stylesheet.css" />
+    <link rel="stylesheet" href="style.css" />
     <script defer src="script.js"></script>
   </head>
   <body>
@@ -21,6 +21,7 @@
           placeholder="First name"
           required
         />
+        <p class="error" >Please enter a valid First name</p>
         <label for="last"><b>Last Name:<b/></label>
         <input type="text" id="last" name="last" placeholder="Last name" required />
         <label for="email"><b>Email</b></label>
@@ -32,7 +33,7 @@
           required
         />
         <label for="mobile">Contact:</label>
-        <input type="text" id="mobile" name="mobile" placeholder="Mobile Number" maxlength="10" required />
+        <input type="text" id="mobile" name="mobile" placeholder="Mobile Number" maxlength="11" required />
   
         <label for="gender"><b>Gender:</b></label>
         <select id="gender" name="gender" required>
@@ -43,8 +44,9 @@
         <button type="submit" class="registerbtn"><b>Register</b></button>
       </div>
 
-    <!--  <div class="container signin">
-        <p>Already have an account? <a href="#">Sign in</a>.</p>
+    <!--  <div class="container new">
+        <p> your register data :</p>
+        <a href="#">New register</a>
       </div>-->
     </form>
   </body>
