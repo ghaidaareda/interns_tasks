@@ -12,6 +12,7 @@ const contactError = document.getElementById("contactError");
 // Validate posted data
 const dataValidation = (e) => {
   e.preventDefault();
+
   clearError(firstError, lastError, emailError, contactError);
 
   const firstName = document.getElementById("first").value.trim();
@@ -40,15 +41,27 @@ const dataValidation = (e) => {
     return;
   }
 
-  const data = {
+  const dataObj = {
     firstName: firstName,
     lastName: lastName,
     email: email,
     contact: contact,
     gender: gender,
   };
+  //console.log(data);
 
-  console.log(data);
+  const data = JSON.stringify(dataObj);
+
+  fetch("https://reqres.in/api/users", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: data,
+  })
+    .then((res) => res.json())
+    .then((result) => console.log(JSON.stringify(result)))
+    .catch((err) => console.log(err.message));
 
   cleardata();
 };
@@ -77,5 +90,3 @@ const cleardata = () => {
 
 // Event
 registerBtn.addEventListener("click", dataValidation);
-
-// new register
