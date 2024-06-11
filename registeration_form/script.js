@@ -47,6 +47,7 @@ const dataValidation = (e) => {
     contact: contact,
     gender: gender,
   };
+
   console.log(data);
 
   cleardata();
