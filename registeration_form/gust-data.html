@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>guest</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+      }
+
+      div {
+        max-width: 400px;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      p {
+        margin: 10px 0;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .guest-data {
+        color: #4caf50;
+      }
+      button.registerbtn {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Thanks for registering</h1>
+      <h2>your information</h2>
+      <div>
+        <hr />
+        <p>
+          Name:
+          <span class="guest-data">{%firstName%} {%lastName%}</span>
+          Email:
+          <span class="guest-data">{%email%}</span> <br />
+          Contact:
+          <span class="guest-data">{%contact%}</span>
+        </p>
+        <hr />
+      </div>
+      <button type="submit" class="registerbtn"><b>New Register</b></button>
+    </div>
+  </body>
+</html>

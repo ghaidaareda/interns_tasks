@@ -12,7 +12,7 @@ const contactError = document.getElementById("contactError");
 // Validate posted data
 const dataValidation = (e) => {
   e.preventDefault();
-  clearError();
+  clearError(firstError, lastError, emailError, contactError);
 
   const firstName = document.getElementById("first").value.trim();
   const lastName = document.getElementById("last").value.trim();
@@ -35,7 +35,7 @@ const dataValidation = (e) => {
     return;
   }
 
-  if (contact.length < 10) {
+  if (contact.length < 10 || !contact.match(/^\d+$/)) {
     showError(contactError, "Please enter a valid Mobile Number");
     return;
   }
@@ -59,11 +59,10 @@ const showError = (element, message) => {
 };
 
 // Clear error messages
-const clearError = () => {
-  firstError.style.display = "none";
-  lastError.style.display = "none";
-  emailError.style.display = "none";
-  contactError.style.display = "none";
+const clearError = (...params) => {
+  for (const ele of params) {
+    ele.style.display = "none";
+  }
 };
 
 // clear data again:
