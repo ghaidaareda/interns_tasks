@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+</head>
+<body>
+    <div id="form_data"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const json = localStorage.getItem('user_form');
+            if (json) {
+                const obj = JSON.parse(json);
+
+                for (const key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        const markup = `
+                        <div>
+                            <span>${key} : ${obj[key]}</span>
+                        </div>
+                        `;
+                        document.getElementById('form_data').innerHTML += markup;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

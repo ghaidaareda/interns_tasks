@@ -1,0 +1,51 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+</head>
+<body>
+    <form>
+        <h2><u>New User</u></h2>
+        <div>
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" required><br><br>
+        </div>
+        <div>
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" required><br><br>
+        </div>
+        <div>
+        <label for="marrietal_state">marrietal_state:</label>
+        <select name="marrietal_state" required>
+            <option>Single 😊</option>
+            <option>Married 💖</option>
+            <option>Divorced ✌</option>
+        </select>
+        </div>
+        <br><br>
+        <div>
+        <label for="register_date">register_date:</label>
+        <input type="date" name="register_date"><br><br>
+        </div>
+        <div>
+        <button type="submit">Submit 👍</button>
+        </div>
+    </form>
+
+    <script>
+        const form = document.querySelector("form")
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const form_data = new FormData(form);
+            const obj = Object.fromEntries(form_data);
+            const json = JSON.stringify(obj);
+            localStorage.setItem('user_form', json);
+            window.location.href = "confirm.html";
+        });
+    </script>
+</body>
+</html
