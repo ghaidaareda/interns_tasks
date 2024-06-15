@@ -33,11 +33,12 @@
         text-align: center;
         font-size: 18px;
         font-weight: bold;
+        /*display: none;*/
       }
       .guest-data {
         color: #4caf50;
       }
-      button.registerbtn {
+      button.btn {
         display: block;
         margin: 20px auto;
         padding: 10px 20px;
@@ -51,21 +52,28 @@
   </head>
   <body>
     <div>
-      <h1>Thanks for registering</h1>
-      <h2>your information</h2>
+      <h1>users information</h1>
       <div>
-        <hr />
-        <p>
-          Name:
-          <span class="guest-data">{%firstName%} {%lastName%}</span>
-          Email:
-          <span class="guest-data">{%email%}</span> <br />
-          Contact:
-          <span class="guest-data">{%contact%}</span>
-        </p>
-        <hr />
+        <p><br /></p>
       </div>
-      <button type="submit" class="registerbtn"><b>New Register</b></button>
+      <button type="submit" class="btn"><b>All Users</b></button>
     </div>
+    <script>
+      const main = document.querySelector("p");
+      document.querySelector(".btn").addEventListener("click", () => {
+        fetch("https://jsonplaceholder.typicode.com/users")
+          .then((res) => res.json())
+          .then((data) => {
+            const html = `Name:
+              <span class="guest-data">${data[0].name}</span><br />
+              Email:
+              <span class="guest-data">${data[0].email}</span> <br />
+              Contact:
+              <span class="guest-data">${data[0].phone}</span>`;
+            main.insertAdjacentHTML("beforeend", html);
+          })
+          .catch((err) => console.log(err));
+      });
+    </script>
   </body>
 </html>
